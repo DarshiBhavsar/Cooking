@@ -9,32 +9,29 @@ const cookieParser = require('cookie-parser');
 const UserModel = require('./models/users');
 const ReceipeModel = require('./models/receipeUser');
 const CreateReceipeModel = require('./models/createReceipe');
-const userRouter = require('./Routes/auth')
-const recipeRouter = require('./Routes/receipe')
-const tagRouter = require('./Routes/tag')
+const userRouter = require('./Routes/auth');
+const recipeRouter = require('./Routes/receipe');
+const tagRouter = require('./Routes/tag');
 
 const app = express();
 
-const SERVER_IP = '192.168.1.7';
-const port = process.env.PORT || 3001;
-
+const SERVER_IP = 'localhost'; // Updated to localhost
+const port = 3001;
 
 // Middleware
 app.use(cors({
     origin: ['http://localhost:3000'],
     methods: ['POST', 'GET', 'PUT', 'DELETE'],
     credentials: true
-}))
+}));
 app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
-app.use('/auth', userRouter)
-app.use('/recipe', recipeRouter)
-app.use('/tags', tagRouter)
+app.use('/auth', userRouter);
+app.use('/recipe', recipeRouter);
+app.use('/tags', tagRouter);
 
-
-mongoose.connect('mongodb+srv://darshilbhavsar01:darshilbhavsar01@cluster0.k4fcuzf.mongodb.net/Recipe?retryWrites=true&w=majority&appName=Cluster0')
-
+mongoose.connect('mongodb+srv://devanshi4089:XTsmMGLm3mW24Zuu@cluster0.j9c6e.mongodb.net/userdb?retryWrites=true&w=majority&appName=Cluster0');
 
 // Multer setup
 const storage = multer.diskStorage({
@@ -49,7 +46,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 const authenticate = (req, res, next) => {
-    // Extract token from Authorization header
     const authHeader = req.headers.authorization;
     const token = authHeader && authHeader.split(' ')[1]; // Assuming Bearer <token>
 
@@ -64,8 +60,7 @@ const authenticate = (req, res, next) => {
         req.userId = decoded.id;
         next();
     });
-}
-
+};
 
 // Routes
 app.post('/createUser', upload.single('image'), authenticate, (req, res) => {
@@ -98,16 +93,15 @@ app.get('/getCategory', authenticate, (req, res) => {
             res.json(usersWithFullImagePath);
         })
         .catch(err => res.json(err));
-})
+});
+
 app.get('/getCategories', authenticate, (req, res) => {
     UserModel.find({})
         .then(categories => {
-            // Remove duplicate category names
             const uniqueCategories = categories.filter((category, index, self) =>
                 index === self.findIndex((c) => c.name === category.name)
             );
 
-            // Add full image path to categories
             const categoriesWithFullImagePath = uniqueCategories.map(category => {
                 if (category.image) {
                     category.image = `http://${SERVER_IP}:${port}/public/images/${category.image}`;
@@ -127,58 +121,6 @@ app.get('/count', authenticate, (req, res) => {
         .then(count => res.json({ count }))
         .catch(err => res.status(500).json({ error: 'Failed to get count for userId', details: err }));
 });
-
-
-// app.post('/createreceipe', upload.single('image'), (req, res) => {
-//     const { name, description, difficulty, ingredients, cookingMethod, cooktime, servingPerson, video, userId } = req.body;
-//     const image = req.file ? req.file.filename : null;
-
-
-//     CreateReceipeModel.create({ name, description, difficulty, ingredients, cookingMethod, cooktime, servingPerson, image, video, userId })
-//         .then(receipe => {
-//             if (receipe.image) {
-//                 receipe.image = `http://${SERVER_IP}:${port}/public/images/${receipe.image}`;
-//             }
-//             res.json({
-//                 "message": "created successfully",
-//                 receipe
-//             });
-//         })
-//         .catch(err => res.json(err));
-// });
-
-// app.post('/login', (req, res) => {
-//     const { email, password } = req.body;
-//     ReceipeModel.findOne({ email: email }).then(user => {
-//         if (user) {
-//             bcrypt.compare(password, user.password, (err, response) => {
-//                 if (response) {
-//                     const token = jwt.sign({ id: user._id }, "jwt-secret-key", { expiresIn: '1d' });
-//                     res.cookie('token', token);
-//                     res.json({
-//                         "status": true,
-//                         "message": "login successfully",
-//                         "token": token,
-//                         id: user._id
-//                     });
-//                 } else {
-//                     res.json('The password is incorrect');
-//                 }
-//             })
-//         } else {
-//             res.json('No record existed');
-//         }
-//     }).catch(err => res.json(err));
-// });
-
-// app.post('/register', (req, res) => {
-//     const { name, email, password } = req.body;
-//     bcrypt.hash(password, 10).then(hash => {
-//         ReceipeModel.create({ name, email, password: hash })
-//             .then(employees => res.json(employees))
-//             .catch(err => res.json(err));
-//     }).catch(err => console.log(err.message));
-// });
 
 app.get('/getUserData', authenticate, (req, res) => {
     UserModel.find({})
@@ -234,22 +176,6 @@ app.delete('/deleteUser/:id', authenticate, (req, res) => {
         .then(user => res.json({ message: "User deleted successfully", user }))
         .catch(err => res.json(err));
 });
-
-// app.get('/getRecipe', authenticate, (req, res) => {
-//     CreateReceipeModel.find({})
-//         .then(recipes => {
-//             const recipesWithFullImagePath = recipes.map(recipe => {
-//                 if (recipe.image) {
-//                     recipe.image = `http://${SERVER_IP}:${port}/public/images/${recipe.image}`;
-//                 }
-//                 return recipe;
-//             });
-//             res.json(recipesWithFullImagePath);
-//         })
-//         .catch(err => res.json(err));
-// });
-
-
 
 app.listen(port, () => {
     console.log(`Server is running on http://${SERVER_IP}:${port}`);
