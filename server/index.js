@@ -20,7 +20,7 @@ const port = 3001;
 
 // Middleware
 app.use(cors({
-    origin: ['https://66d0a967467aeb52272b4678--marvelous-cupcake-31cdf5.netlify.app/'],
+    origin: ['https://webcreatarecipe.netlify.app/'],
     methods: ['POST', 'GET', 'PUT', 'DELETE'],
     credentials: true
 }));
