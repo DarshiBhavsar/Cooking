@@ -12,7 +12,6 @@ router.post('/register', async (req, res) => {
 
         // Create the user with hashed password
         const user = await ReceipeModel.create({ name, email, password: hash });
-
         // Send the created user as a response
         res.json(user);
     } catch (err) {
