@@ -33,7 +33,7 @@ app.use('/recipe', recipeRouter)
 app.use('/tags', tagRouter)
 
 
-mongoose.connect('mongodb://localhost:27017/crud')
+mongoose.connect('mongodb+srv://darshilbhavsar01:darshilbhavsar01@cluster0.k4fcuzf.mongodb.net/Recipe?retryWrites=true&w=majority&appName=Cluster0')
 
 
 // Multer setup
