@@ -3,7 +3,6 @@ const ReceipeModel = require('../models/receipeUser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
-
 router.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
 
