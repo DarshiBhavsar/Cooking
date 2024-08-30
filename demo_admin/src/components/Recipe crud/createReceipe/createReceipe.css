@@ -1,0 +1,282 @@
+.full-screen-container {
+    height: 100%;
+    width: 100vw;
+    background-color: white;
+    margin: 0px;
+}
+
+
+
+.form-title {
+    margin-bottom: 1.5rem;
+    color: #333333;
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.form-control1 {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control1 label {
+    margin-bottom: 0.5rem;
+    color: #555555;
+    font-weight: 500;
+}
+
+.form-control1 input,
+.form-control1 select {
+    width: 80vw;
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 0.25rem;
+    transition: border-color 0.3s;
+}
+
+.form-control1 input:focus,
+.form-control1 select:focus {
+    border-color: #3182ce;
+    outline: none;
+}
+
+.submit-button {
+    width: 80vw;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #343a40;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.submit-button:hover {
+    background-color: #454d55;
+}
+
+.mt-4 {
+    margin-top: 1.5rem !important;
+}
+
+.image-preview-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-preview-wrapper {
+    position: relative;
+    width: 100px;
+    /* Set width as needed */
+    height: 100px;
+    /* Set height as needed */
+    border-radius: 50%;
+    overflow: visible;
+    background-color: #f0f0f0;
+    /* Placeholder background color */
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.image-edit-icon {
+    position: absolute;
+    bottom: -7px;
+    z-index: 20;
+    height: 29px;
+    width: 29px;
+    /* Adjusts the vertical positioning */
+    right: 40px;
+    /* Adjusts the horizontal positioning */
+    background-color: white;
+    border: 1.5px solid black;
+    color: black;
+    border-radius: 50%;
+    padding: 3px;
+    font-size: small;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Add {
+    padding: 10px 10px;
+    margin-left: 0px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    background-color: #545555;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.Add:hover {
+    background-color: #696c6c;
+}
+
+.input-group {
+    width: 80vw;
+}
+
+.ckeditor {
+    width: 80vw;
+}
+
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    padding: 8px;
+    width: 80vw;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-icon {
+    margin-left: 8px;
+    display: none;
+    /* Adjust margin as needed */
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 80vw;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.dropdown-item.selected {
+    background-color: #ddd;
+}
+
+.selected-tags {
+    flex: 1;
+    /* Allows the element to take up available space */
+    white-space: nowrap;
+    /* Prevents text from wrapping to the next line */
+    overflow: hidden;
+    /* Hides text overflow */
+    text-overflow: ellipsis;
+    /* Adds ellipsis for overflowed text */
+}
+
+
+
+@media (max-width: 1024px) {
+
+    .form-control1 input,
+    .form-control1 select {
+        width: 70vw;
+    }
+
+    .ckeditor {
+        width: 70vw;
+    }
+
+    .input-group {
+        width: 66vw;
+    }
+
+    .selected-tags {
+        flex: 1;
+        /* Allows the element to take up available space */
+        white-space: nowrap;
+        /* Prevents text from wrapping to the next line */
+        overflow: hidden;
+        /* Hides text overflow */
+        text-overflow: ellipsis;
+        /* Adds ellipsis for overflowed text */
+    }
+
+    .submit-button {
+        width: 100%;
+        margin-bottom: 0px;
+    }
+}
+
+
+@media (max-width: 912px) {
+
+    .form-control1 input,
+    .form-control1 select {
+        width: 66vw;
+    }
+
+    .ckeditor {
+        width: 66vw;
+    }
+
+    .dropdown-toggle {
+        width: 66vw;
+    }
+
+    .dropdown-menu {
+        width: 66vw;
+    }
+
+    .input-group {
+        width: 66vw;
+    }
+
+    .submit-button {
+        width: 100%;
+        margin-bottom: 0px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .form-control1 input,
+    .form-control1 select {
+        width: auto;
+    }
+
+    .dropdown-toggle {
+        width: auto;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+    }
+
+    .ckeditor {
+        width: auto;
+    }
+
+    .input-group {
+        width: 88vw;
+    }
+
+
+
+    .submit-button {
+        width: 100%;
+        margin-bottom: 0px;
+    }
+}

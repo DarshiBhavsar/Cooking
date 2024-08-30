@@ -1,0 +1,167 @@
+.full-screen-container {
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    margin: 0px 0px;
+}
+
+.form-title {
+    margin-bottom: 1.5rem;
+    color: #333333;
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.form-control2 {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control2 label {
+    margin-bottom: 0.5rem;
+    color: #555555;
+    font-weight: 500;
+}
+
+.form-control2 input,
+.form-control2 select {
+    width: 80vw;
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 0.25rem;
+    transition: border-color 0.3s;
+}
+
+.form-control2 input:focus,
+.form-control2 select:focus {
+    border-color: #3182ce;
+    outline: none;
+}
+
+.submit-button1 {
+    margin-bottom: 20px;
+    width: auto;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #343a40;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button1:hover {
+    background-color: #454d55;
+}
+
+.mt-4 {
+    margin-top: 1.5rem !important;
+}
+
+.image-preview-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-preview-wrapper {
+    position: relative;
+    width: 100px;
+    /* Set width as needed */
+    height: 100px;
+    /* Set height as needed */
+    border-radius: 50%;
+    overflow: visible;
+    background-color: #f0f0f0;
+    /* Placeholder background color */
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.image-edit-icon {
+    position: absolute;
+    bottom: -7px;
+    z-index: 20;
+    /* Adjusts the vertical positioning */
+    right: 40px;
+    /* Adjusts the horizontal positioning */
+    background-color: white;
+    border: 1.5px solid black;
+    color: black;
+    border-radius: 50%;
+    padding: 3px;
+    font-size: small;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1500px) {
+
+    .form-control2 input,
+    .form-control2 select {
+        width: 80vw;
+    }
+
+    .submit-button1 {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 1280px) {
+
+    .form-control2 input,
+    .form-control2 select {
+        width: 78vw;
+    }
+
+    .submit-button1 {
+        width: 78vw;
+    }
+}
+
+
+@media (max-width: 1024px) {
+
+    .form-control2 input,
+    .form-control2 select {
+        width: 72vw;
+    }
+
+    .submit-button1 {
+        width: 72vw;
+    }
+}
+
+@media (max-width: 912px) {
+
+    .form-control2 input,
+    .form-control2 select {
+        width: 65vw;
+    }
+
+    .submit-button1 {
+        width: 65vw;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .form-control2 input,
+    .form-control2 select {
+        width: auto;
+    }
+
+    .submit-button1 {
+        width: 100%;
+    }
+}

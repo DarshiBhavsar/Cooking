@@ -1,0 +1,103 @@
+/* Ensure the sidebar takes full height and is positioned fixed */
+.sidebar-container {
+  position: fixed;
+  width: 230px;
+  /* Adjust width as needed */
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: #f8f9fa;
+  /* Sidebar background color */
+  transition: transform 0.3s ease;
+  /* Smooth transition for sliding effect */
+  transform: translateX(0);
+  /* Default position */
+  z-index: 1000;
+  /* Ensure sidebar is on top */
+}
+
+/* Class to hide the sidebar */
+.sidebar-hidden {
+  transform: translateX(-100%);
+  /* Hide sidebar by moving it off-screen */
+}
+
+/* Ensure the main content adjusts based on the sidebar's visibility */
+.main-content {
+  margin-left: 230px;
+  /* Same as sidebar width */
+  overflow-x: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s ease;
+  /* Smooth transition for adjusting content */
+}
+
+/* Class to adjust content width when sidebar is hidden */
+.content-expanded {
+  margin-left: 0;
+  /* Adjust margin when sidebar is hidden */
+}
+
+/* Make sure the navbar is fixed on top */
+.navbar-container {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  /* Ensure it stays on top of the sidebar */
+  width: 100vw;
+  /* Ensure it stays on top */
+}
+
+@media (max-width: 1500px) {
+  .sidebar-container {
+    transform: translateX(0);
+    /* Sidebar always visible on medium screens */
+  }
+
+  .main-content {
+    margin-left: 230px;
+    /* Sidebar visible on medium screens */
+  }
+}
+
+/* Styles for medium screens */
+@media (max-width: 1024px) {
+  .sidebar-container {
+    transform: translateX(0);
+    /* Sidebar always visible on medium screens */
+  }
+
+  .main-content {
+    margin-left: 230px;
+    /* Sidebar visible on medium screens */
+  }
+}
+
+
+/* Styles for small screens */
+@media (max-width: 768px) {
+  .sidebar-container {
+    transform: translateY(0);
+    /* Position the sidebar above the screen */
+    top: 0;
+    /* Ensure it is at the top of the viewport */
+    left: 0;
+    z-index: 1200;
+    /* Ensure it is above the content */
+    position: fixed;
+    /* Fixed position to stay on screen */
+  }
+
+  .main-content {
+    margin-left: 0;
+    /* No margin needed on small screens */
+  }
+
+  .sidebar-hidden {
+    transform: translateX(-100%);
+    /* Hide sidebar by moving it off-screen */
+  }
+
+}

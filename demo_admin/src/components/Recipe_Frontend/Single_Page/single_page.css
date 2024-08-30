@@ -1,0 +1,226 @@
+.single-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 400px;
+    max-width: 850px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.name {
+    font-size: 30px;
+}
+
+.main-section {
+    display: flex;
+    background-color: white;
+    /* border: 1px solid black; */
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    padding: 35px 30px;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.description1 {
+    font-family: "Cherry Swash", serif;
+    margin: 20px 10px;
+    line-height: 30px;
+    font-size: 20px;
+}
+
+.cooktime-container {
+    display: flex;
+    font-family: "Cherry Swash", serif;
+    flex-direction: column;
+    align-items: center;
+    padding: 13px;
+    border-right: 1px solid #ebe7e7;
+    background-color: white;
+    width: 300px;
+    margin: 0px;
+}
+
+.cooktime-image {
+    margin-left: 0px;
+}
+
+.cooktime-info {
+    margin: 4px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cooktime-info p {
+    margin: 4px 0px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.cooktime-info p:first-child {
+    font-weight: bold;
+    font-size: 16px;
+    color: #555;
+}
+
+.video1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 855px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.ingredients {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    text-align: left;
+    width: 850px;
+    font-size: 20px;
+
+}
+
+.instructions {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    font-size: 20px;
+    width: 850px;
+}
+
+.ingredient-list {
+    margin-bottom: 20px;
+}
+
+.section-3 {
+    cursor: pointer;
+    display: flex;
+    width: 100%;
+    gap: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+}
+
+
+
+.tag-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.tag-item {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+}
+
+.parentdiv {
+    display: flex;
+    position: relative;
+}
+
+.All-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 25px;
+    position: absolute;
+    top: 38vh;
+    cursor: pointer;
+    left: 14vw;
+}
+
+.div-3 {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 850px;
+    margin: 20px 0px
+}
+
+/* .Ingredient {
+    font-family: "Cherry Swash", serif;
+}
+
+.Instruction {
+    font-family: "Cherry Swash", serif;
+} */
+
+@media print {
+
+    .All-icons,
+    .arrow,
+    .footer,
+    .navbar,
+    .custom-navbar-toggler,
+    .custom-nav-link1,
+    .custom-nav-link2,
+    .back,
+    .custom-navbar-wrapper1,
+    .overview-buttons,
+    .video1,
+    .bi {
+        display: none !important;
+    }
+
+    .print-container {
+        display: none;
+    }
+
+    .name {
+        width: 100%;
+        border-bottom: 1.5px solid black;
+    }
+
+    .div-3 {
+        margin-top: 100px;
+    }
+
+    .main-section {
+        width: 100%;
+        margin: 10;
+        padding: 10;
+    }
+
+    /* .section-3 {
+        margin-bottom: 50px;
+    } */
+
+    .tag-item {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .print-button {
+        display: none;
+    }
+
+    .Ingredient {
+        color: orange;
+    }
+
+    .Instruction {
+        color: orange;
+    }
+
+    .ingredients {
+        margin-bottom: 150px;
+    }
+
+    .instructions {
+        margin-top: 100px;
+    }
+
+}

@@ -1,0 +1,210 @@
+.user-container {
+    margin: 40px;
+    min-height: 100vh;
+    background-color: white;
+}
+
+.user-card {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Add box-shadow */
+    padding: 20px;
+}
+
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.add-btn {
+    background-color: #38a169;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Add box-shadow */
+}
+
+.add-btn:hover {
+    background-color: #2f855a;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Ensures no double borders */
+}
+
+.user-table th,
+.user-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+    vertical-align: middle;
+    /* Ensures consistent vertical alignment */
+}
+
+.user-table th {
+    background-color: #edf2f7;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.user-row:hover {
+    background-color: #f1f5f9;
+    cursor: pointer;
+}
+
+.user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: black;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Add box-shadow */
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.update-btn1,
+.delete-btn1 {
+    /* margin-top: 56px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 56px;
+    padding: 8px 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Add box-shadow */
+}
+
+.update-btn1 {
+    background-color: #4299e1;
+    color: white;
+}
+
+.update-btn1:hover {
+    background-color: #3182ce;
+}
+
+.delete-btn1 {
+    background-color: #e53e3e;
+    color: white;
+}
+
+.delete-btn1:hover {
+    background-color: #c53030;
+}
+
+.custom-modal .modal-dialog {
+    max-width: 500px;
+    /* Adjust size as needed */
+}
+
+.custom-modal .modal-content {
+    background-color: white;
+    /* White with some transparency */
+    border: none;
+    /* Remove border */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add box-shadow */
+}
+
+.custom-modal .modal-header {
+    border-bottom: block;
+    color: black;
+    /* Remove border */
+}
+
+
+
+.custom-modal .modal-footer {
+    border-top: none;
+    /* Remove border */
+    justify-content: end;
+    /* Center buttons */
+}
+
+.custom-modal .modal-body {
+    font-weight: bold;
+    font-size: larger;
+    padding: 0;
+    /* Center buttons */
+}
+
+.custom-modal .btn-primary {
+    background-color: #007bff;
+    padding: 10px 30px;
+    /* Primary color */
+    border-color: #007bff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Add box-shadow */
+}
+
+.custom-modal .btn-secondary {
+    background-color: #6c757d;
+    padding: 10px 30px;
+    /* Secondary color */
+    border-color: #6c757d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Add box-shadow */
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    /* Enables horizontal scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scrolling on iOS devices */
+    margin: 0 -15px;
+    /* Adjust based on your layout */
+}
+
+.user-table {
+    min-width: 600px;
+    /* Ensure the table has a minimum width to enable scrolling */
+}
+
+@media (max-width: 768px) {
+    .user-table {
+        min-width: 100%;
+    }
+
+    .user-container {
+        max-width: 100%;
+        margin: 15px;
+
+    }
+}
+
+@media (min-width: 769px) {
+    .user-table {
+        min-width: 600px;
+        /* Ensure minimum width for larger screens */
+    }
+}

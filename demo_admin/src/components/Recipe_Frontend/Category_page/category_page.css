@@ -1,0 +1,103 @@
+.custom-navbar-wrapper1 {
+    background-image: url('https://foodhub.modeltheme.com/wp-content/themes/foodhub/images/bg_breadcrumbs.jpg');
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 10vh;
+}
+
+.para-1 {
+    color: white;
+    font-family: "Signika", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    font-size: 50px;
+}
+
+.Search {
+    margin-top: 20px;
+    width: 500px;
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 50px;
+    padding: 15px 15px;
+    font-size: 16px;
+    color: #495057;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Search::placeholder {
+    color: #6c757d;
+    opacity: 1;
+}
+
+.Search:focus {
+    border: 1px solid gray;
+    outline: none;
+}
+
+.div-1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0px;
+}
+
+.main-div {
+    display: flex;
+    justify-content: center;
+}
+
+.category-section1 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.category-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.category-image1 {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.category-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.category-description {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.category-status {
+    font-size: 0.9rem;
+    color: #28a745;
+    font-weight: 600;
+}

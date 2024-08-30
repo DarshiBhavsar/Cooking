@@ -1,0 +1,187 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.custom-navbar-wrapper {
+    background-image: url('https://foodhub.modeltheme.com/wp-content/uploads/2020/02/foodhub-slider-main-food-v4.jpg?id=20741');
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 120vh;
+}
+
+.custom-navbar {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: transparent;
+}
+
+.custom-navbar-brand {
+    width: 35%;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 7px 20px;
+}
+
+.logo1 {
+    height: 40px;
+    width: auto;
+}
+
+.list {
+    display: flex;
+    gap: 40px;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.custom-nav-link1 {
+    color: white;
+    margin-right: 15px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.custom-navbar-toggler {
+    color: white;
+    border-color: white;
+}
+
+.custom-navbar-toggler-icon {
+    background-color: white;
+}
+
+.list1 {
+    display: flex;
+    gap: 20px;
+}
+
+.custom-nav-link2 {
+    color: white;
+    margin-right: 15px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.p1 {
+    color: white;
+    font-weight: 700;
+    font-size: 50px;
+    font-family: "Cherry Swash", serif;
+    font-style: normal;
+}
+
+.h4 {
+    color: white;
+    font-weight: 400;
+    font-family: "Ubuntu", sans-serif;
+    font-style: normal;
+    margin-top: 30px;
+}
+
+.heading {
+    margin: 170px 100px 0px 100px;
+}
+
+.navbar-flex-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.input-group1 {
+    margin-top: 50px;
+    height: 50px;
+    border-radius: 50px;
+    width: 40%;
+}
+
+.form-control3 {
+    background-color: transparent;
+    border-radius: 10px;
+    color: white;
+    outline: none;
+    box-shadow: none;
+}
+
+.form-control3::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.form-control3:focus {
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    opacity: 1;
+}
+
+.category-button {
+    background-color: white;
+    border: none;
+    border-right: 2px solid rgb(166, 161, 161);
+}
+
+
+.search-button {
+    background-color: white;
+    border: none;
+}
+
+.category-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 0px 15px;
+    justify-content: center;
+}
+
+.category-image {
+    height: 400px;
+    width: 356px;
+    padding: 0px 10px 0px 12px;
+    border-radius: 30px;
+    padding: 14px;
+    margin-top: 20px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.category-image:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.category-name {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 500;
+}
+
+.custom-select1 {
+    width: 100%;
+    margin-top: -18px;
+    padding: 1rem 1rem;
+    border-right: 2px solid rgb(166, 161, 161);
+    font-size: 1rem;
+    border-radius: 0px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+
+
+.footer {
+    margin-top: 90px;
+    background-color: rgb(29, 28, 28);
+    color: white;
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,97 @@
+/* Sidebar container */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #343a40;
+    color: white;
+    height: 100vh;
+    padding: 1rem;
+    width: 230px;
+}
+
+/* App.css */
+
+
+/* Logo */
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1.8rem;
+    /* Increased font size */
+    color: white;
+    text-decoration: none;
+}
+
+/* Nav links */
+.sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    margin-top: 10px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 1.2rem;
+    /* Increased font size */
+}
+
+/* Active link */
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+    background-color: #757575;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Icons */
+.sidebar .nav-link i {
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    /* Increased icon size */
+}
+
+/* Section divider */
+.sidebar hr {
+    border-color: white;
+}
+
+/* User info */
+.sidebar .user-info {
+    padding: 1rem;
+    font-size: 1.4rem;
+    /* Increased font size */
+    display: flex;
+    align-items: center;
+}
+
+/* Adjust user icon and name */
+.sidebar .user-info i {
+    margin-right: 1rem;
+    font-size: 1.8rem;
+    /* Increased icon size */
+}
+
+.close-icon {
+    font-size: xx-large;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* Vertically center */
+    margin-left: auto;
+    /* Push to the right */
+}
+
+@media (max-width: 768px) {
+    .close-icon {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .close-icon {
+        display: none;
+    }
+}

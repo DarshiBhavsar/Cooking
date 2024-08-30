@@ -1,0 +1,93 @@
+/* Navbar container */
+.navbar1 {
+    background-color: #343a40;
+}
+
+/* Navbar brand */
+.navbar-brand {
+    font-size: 1.5rem;
+    /* Larger font size */
+    color: #ffffff;
+    /* White color */
+    text-decoration: none;
+}
+
+/* Navbar brand for mobile */
+.navbar-brand .bi-justify {
+    font-size: 1.8rem;
+    /* Larger icon size */
+    color: #ffffff;
+    /* White color */
+}
+
+/* Navbar links */
+.nav-link {
+    color: #beb9b9;
+    /* White color */
+    font-size: 1.1rem;
+    /* Slightly larger font size */
+    transition: color 0.3s;
+}
+
+/* Navbar links hover */
+.nav-link:hover {
+    color: #adb5bd;
+    /* Light gray on hover */
+}
+
+/* Navbar dropdown */
+.navbar-nav .nav-item .dropdown-menu {
+    background-color: #343a40;
+    border: none;
+}
+
+.navbar-nav .nav-item .dropdown-item {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.navbar-nav .nav-item .dropdown-item:hover {
+    background-color: #495057;
+}
+
+.form-control {
+    border-radius: 0.25rem;
+}
+
+.button {
+    color: white;
+    border: 1px solid #ffffff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-outline-success {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.btn-outline-success:hover {
+    background-color: #ffffff;
+
+    color: #343a40;
+
+    border-color: #ffffff;
+
+}
+
+@media (max-width: 768px) {
+    .navbar-brand .bi-justify {
+        display: block;
+
+    }
+}
+
+@media (min-width: 769px) {
+    .navbar-brand .bi-justify {
+        display: none;
+    }
+}
