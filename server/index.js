@@ -14,7 +14,6 @@ const recipeRouter = require('./Routes/receipe');
 const tagRouter = require('./Routes/tag');
 const { default: BASE_URL } = require('./config/config');
 
-
 const app = express();
 
 const SERVER_IP = 'localhost';
@@ -78,7 +77,7 @@ app.post('/createUser', upload.single('image'), authenticate, (req, res) => {
     UserModel.create({ name, description, status, image, userId })
         .then(user => {
             if (user.image) {
-                user.image = `${BASE_URL}/public/images/${user.image}`;
+                user.image = `http://${SERVER_IP}:${port}/public/images/${user.image}`;
             }
             res.json(user);
         })
@@ -91,7 +90,7 @@ app.get('/getCategory', authenticate, (req, res) => {
         .then(users => {
             const usersWithFullImagePath = users.map(user => {
                 if (user.image) {
-                    user.image = `${BASE_URL}/public/images/${user.image}`;
+                    user.image = `http://${SERVER_IP}:${port}/public/images/${user.image}`;
                 }
                 return user;
             });
@@ -109,7 +108,7 @@ app.get('/getCategories', authenticate, (req, res) => {
 
             const categoriesWithFullImagePath = uniqueCategories.map(category => {
                 if (category.image) {
-                    category.image = `${BASE_URL}/public/images/${category.image}`;
+                    category.image = `http://${SERVER_IP}:${port}/public/images/${category.image}`;
                 }
                 return category;
             });
