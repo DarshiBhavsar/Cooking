@@ -77,7 +77,7 @@ app.post('/createUser', upload.single('image'), authenticate, (req, res) => {
     UserModel.create({ name, description, status, image, userId })
         .then(user => {
             if (user.image) {
-                user.image = `https://cooking-5.onrender.com/public/images/${user.image}`;
+                user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
             }
             res.json(user);
         })
@@ -90,7 +90,7 @@ app.get('/getCategory', authenticate, (req, res) => {
         .then(users => {
             const usersWithFullImagePath = users.map(user => {
                 if (user.image) {
-                    user.image = `https://cooking-5.onrender.com/public/images/${user.image}`;
+                    user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
                 }
                 return user;
             });
@@ -108,7 +108,7 @@ app.get('/getCategories', authenticate, (req, res) => {
 
             const categoriesWithFullImagePath = uniqueCategories.map(category => {
                 if (category.image) {
-                    category.image = `https://cooking-5.onrender.com/public/images/${category.image}`;
+                    category.image = `https://cooking-9.onrender.com/public/images/${category.image}`;
                 }
                 return category;
             });
@@ -131,7 +131,7 @@ app.get('/getUserData', authenticate, (req, res) => {
         .then(users => {
             const usersWithFullImagePath = users.map(user => {
                 if (user.image) {
-                    user.image = `https://cooking-5.onrender.com/public/images/${user.image}`;
+                    user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
                 }
                 return user;
             });
@@ -145,7 +145,7 @@ app.get('/getUser/:id', authenticate, (req, res) => {
     UserModel.findById(id)
         .then(user => {
             if (user.image) {
-                user.image = `https://cooking-5.onrender.com/public/images/${user.image}`;
+                user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
             }
             res.json(user);
         })
@@ -167,7 +167,7 @@ app.put('/updateUser/:id', upload.single('image'), authenticate, (req, res) => {
     UserModel.findByIdAndUpdate(id, updateData, { new: true })
         .then(user => {
             if (user.image) {
-                user.image = `https://cooking-5.onrender.com/public/images/${user.image}`;
+                user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
             }
             res.json(user);
         })
