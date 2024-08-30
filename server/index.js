@@ -108,7 +108,7 @@ app.get('/getCategories', authenticate, (req, res) => {
 
             const categoriesWithFullImagePath = uniqueCategories.map(category => {
                 if (category.image) {
-                    category.image = `https://cooking-9.onrender.com/public/images/${category.image}`;
+                    category.image = `https://cooking-5.onrender.com/public/images/${category.image}`;
                 }
                 return category;
             });
