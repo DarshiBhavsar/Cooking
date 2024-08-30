@@ -101,7 +101,7 @@ router.post('/createReceipe', authenticate, upload.array('image'), async (req, r
 
         // Update recipe image URL
         if (recipe.image) {
-            recipe.image = `http://${SERVER_IP}:${PORT}/public/images/${recipe.image}`;
+            recipe.image = `https://cooking-9.onrender.com/public/images/${recipe.image}`;
         }
 
         res.json({
@@ -154,9 +154,9 @@ router.get('/getRecipe', authenticate, async (req, res) => {
         // Map recipes to include full image path
         const recipesWithFullImagePath = filteredRecipes.map(recipe => {
             if (Array.isArray(recipe.image)) {
-                recipe.image = recipe.image.map(img => `http://${SERVER_IP}:${PORT}/public/images/${img}`);
+                recipe.image = recipe.image.map(img => `https://cooking-9.onrender.com/public/images/${img}`);
             } else if (recipe.image) {
-                recipe.image = `http://${SERVER_IP}:${PORT}/public/images/${recipe.image}`;
+                recipe.image = `https://cooking-9.onrender.com/public/images/${recipe.image}`;
             }
             return recipe;
         });
@@ -196,9 +196,9 @@ router.get('/getRecipes', authenticate, async (req, res) => {
 
         const recipesWithFullImagePath = filteredRecipes.map(recipe => {
             if (Array.isArray(recipe.image)) {
-                recipe.image = recipe.image.map(img => `http://${SERVER_IP}:${PORT}/public/images/${img}`);
+                recipe.image = recipe.image.map(img => `https://cooking-9.onrender.com/public/images/${img}`);
             } else if (recipe.image) {
-                recipe.image = `http://${SERVER_IP}:${PORT}/public/images/${recipe.image}`;
+                recipe.image = `https://cooking-9.onrender.com/public/images/${recipe.image}`;
             }
             return recipe;
         });
@@ -276,9 +276,9 @@ router.get('/getReceipe/:id', authenticate, async (req, res) => {
         if (recipe) {
             // Construct image URLs if the image field is an array
             if (Array.isArray(recipe.image)) {
-                recipe.image = recipe.image.map(img => `http://${SERVER_IP}:${PORT}/public/images/${img}`);
+                recipe.image = recipe.image.map(img => `https://cooking-9.onrender.com/public/images/${img}`);
             } else if (recipe.image) {
-                recipe.image = [`http://${SERVER_IP}:${PORT}/public/images/${recipe.image}`];
+                recipe.image = [`https://cooking-9.onrender.com/public/images/${recipe.image}`];
             }
 
             res.json(recipe);
@@ -318,9 +318,9 @@ router.put('/updateUser/:id', authenticate, upload.array('image'), async (req, r
 
         if (user) {
             if (Array.isArray(user.image)) {
-                user.image = user.image.map(img => `http://${SERVER_IP}:${PORT}/public/images/${img}`);
+                user.image = user.image.map(img => `https://cooking-9.onrender.com/public/images/${img}`);
             } else if (user.image) {
-                user.image = `http://${SERVER_IP}:${PORT}/public/images/${user.image}`;
+                user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
             }
             res.json(user);
         } else {
