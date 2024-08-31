@@ -49,10 +49,20 @@ router.post('/createReceipe', authenticate, upload.array('image'), async (req, r
     try {
         const { name, description, difficulty, ingredients, cookingMethod, cooktime, servingPerson, video, userId, category, tags } = req.body;
 
-        const cat_name = await Category.findById(category);
-        const tag_names = await Tag.find({ '_id': { $in: tags } });
-        const user_names = await ReceipeModel.findById(userId);
+        // Log the IDs
+        console.log('Category ID:', category);
+        console.log('Tags ID:', tags);
 
+        // Find category and tags and user name
+        const cat_name = await Category.findById(category);
+        const tag_names = await Tag.find({ '_id': { $in: tags } }); // Fetch multiple tags
+        const user_names = await ReceipeModel.findById(userId); // Fetch multiple tags
+
+        // Log the results
+        console.log('Category Name:', cat_name);
+        console.log('Tag Names:', tag_names);
+
+        // Validate existence of category and tags
         if (!cat_name) {
             return res.status(400).json({ message: 'Category not found' });
         }
@@ -60,13 +70,15 @@ router.post('/createReceipe', authenticate, upload.array('image'), async (req, r
             return res.status(400).json({ message: 'One or more tags not found' });
         }
 
-        const image = req.files ? req.files.map(file => `https://cooking-9.onrender.com/public/images/${file.filename}`) : [];
+        const image = req.files ? req.files.map(file => file.filename) : [];
         if (!userId) {
             return res.status(400).json({ message: 'userId is required' });
         }
 
+        // Extract tag names
         const tagNames = tag_names.map(tag => tag.name);
 
+        // Create new recipe
         const newRecipe = new CreateReceipeModel({
             name,
             description,
@@ -81,11 +93,16 @@ router.post('/createReceipe', authenticate, upload.array('image'), async (req, r
             category,
             category_name: cat_name.name,
             tags,
-            tag_names: tagNames,
-            user_name: user_names.name,
+            tag_names: tagNames, // Store the array of tag names
+            user_name: user_names.name, // Store the array of tag names
         });
 
         const recipe = await newRecipe.save();
+
+        // Update recipe image URL
+        if (recipe.image) {
+            recipe.image = `https://cooking-9.onrender.com/public/images/${recipe.image}`;
+        }
 
         res.json({
             message: 'Recipe created successfully',
@@ -96,7 +113,6 @@ router.post('/createReceipe', authenticate, upload.array('image'), async (req, r
         res.status(500).json({ message: 'Internal server error' });
     }
 });
-
 
 
 // Route to get recipes for a specific user
