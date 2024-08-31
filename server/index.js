@@ -13,11 +13,10 @@ const userRouter = require('./Routes/auth');
 const recipeRouter = require('./Routes/receipe');
 const tagRouter = require('./Routes/tag');
 
-
 const app = express();
 
 const SERVER_IP = 'localhost';
-// const SERVER_IP = '192.168.1.7'
+// const SERVER_IP = '192.168.1.32'
 const port = 3001;
 
 // Middleware
@@ -40,13 +39,15 @@ mongoose.connect('mongodb+srv://devanshi4089:XTsmMGLm3mW24Zuu@cluster0.j9c6e.mon
 // Multer setup
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'public/images'); // Ensure this directory exists
+        cb(null, 'public/images');
     },
     filename: (req, file, cb) => {
-        const uniqueName = file.fieldname + '_' + Date.now() + path.extname(file.originalname);
-        cb(null, uniqueName);
+        cb(null, file.fieldname + '_' + Date.now() + path.extname(file.originalname));
     }
 });
+
+
+const baseUrl = process.env.BACKEND_BASE_URL;
 const upload = multer({ storage });
 
 const authenticate = (req, res, next) => {
@@ -68,30 +69,20 @@ const authenticate = (req, res, next) => {
 
 // Routes
 app.post('/createUser', upload.single('image'), authenticate, (req, res) => {
-    // Log the incoming file and body data for debugging
-    console.log('File:', req.file);
-    console.log('Body:', req.body);
-
-    if (!req.file) {
-        return res.status(400).json({ message: 'No file uploaded' });
-    }
-
     const { name, description, status, userId } = req.body;
-    const image = req.file ? `https://cooking-9.onrender.com/public/images/${req.file.filename}` : null;
-
+    const image = req.file ? req.file.filename : null;
     if (!userId) {
         return res.status(400).json({ message: 'userId is required' });
     }
 
-    // Create the user record in the database
     UserModel.create({ name, description, status, image, userId })
         .then(user => {
+            if (user.image) {
+                user.image = `${baseUrl}/public/images/${user.image}`;
+            }
             res.json(user);
         })
-        .catch(err => {
-            console.error('Error creating user:', err);
-            res.status(500).json({ message: 'Internal server error', error: err.message });
-        });
+        .catch(err => res.json(err));
 });
 
 app.get('/getCategory', authenticate, (req, res) => {
@@ -100,7 +91,7 @@ app.get('/getCategory', authenticate, (req, res) => {
         .then(users => {
             const usersWithFullImagePath = users.map(user => {
                 if (user.image) {
-                    user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
+                    user.image = `${baseUrl}/public/images/${user.image}`;
                 }
                 return user;
             });
@@ -118,7 +109,7 @@ app.get('/getCategories', authenticate, (req, res) => {
 
             const categoriesWithFullImagePath = uniqueCategories.map(category => {
                 if (category.image) {
-                    category.image = `https://cooking-9.onrender.com/public/images/${category.image}`;
+                    category.image = `${baseUrl}/public/images/${category.image}`;
                 }
                 return category;
             });
@@ -141,7 +132,7 @@ app.get('/getUserData', authenticate, (req, res) => {
         .then(users => {
             const usersWithFullImagePath = users.map(user => {
                 if (user.image) {
-                    user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
+                    user.image = `${baseUrl}/public/images/${user.image}`;
                 }
                 return user;
             });
@@ -155,7 +146,7 @@ app.get('/getUser/:id', authenticate, (req, res) => {
     UserModel.findById(id)
         .then(user => {
             if (user.image) {
-                user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
+                user.image = `${baseUrl}/public/images/${user.image}`;
             }
             res.json(user);
         })
@@ -170,27 +161,19 @@ app.put('/updateUser/:id', upload.single('image'), authenticate, (req, res) => {
         status: req.body.status,
     };
 
-    // Check if a new image is uploaded
     if (req.file) {
-        updateData.image = `https://cooking-9.onrender.com/public/images/${req.file.filename}`;
+        updateData.image = req.file.filename;
     }
 
-    // Find user by ID and update the record
     UserModel.findByIdAndUpdate(id, updateData, { new: true })
         .then(user => {
-            if (!user) {
-                return res.status(404).json({ message: 'User not found' });
+            if (user.image) {
+                user.image = `${baseUrl}/public/images/${user.image}`;
             }
-
-            // Return the updated user object
             res.json(user);
         })
-        .catch(err => {
-            console.error('Error updating user:', err);
-            res.status(500).json({ message: 'Internal server error', error: err.message });
-        });
+        .catch(err => res.status(500).json(err));
 });
-
 
 app.delete('/deleteUser/:id', authenticate, (req, res) => {
     const id = req.params.id;
