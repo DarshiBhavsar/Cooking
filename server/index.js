@@ -69,20 +69,19 @@ const authenticate = (req, res, next) => {
 // Routes
 app.post('/createUser', upload.single('image'), authenticate, (req, res) => {
     const { name, description, status, userId } = req.body;
-    const image = req.file ? req.file.filename : null;
+    const image = req.file ? `https://cooking-9.onrender.com/public/images/${req.file.filename}` : null;
+
     if (!userId) {
         return res.status(400).json({ message: 'userId is required' });
     }
 
     UserModel.create({ name, description, status, image, userId })
         .then(user => {
-            if (user.image) {
-                user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
-            }
             res.json(user);
         })
-        .catch(err => res.json(err));
+        .catch(err => res.status(500).json(err));
 });
+
 
 app.get('/getCategory', authenticate, (req, res) => {
     const userId = req.userId;
@@ -161,18 +160,17 @@ app.put('/updateUser/:id', upload.single('image'), authenticate, (req, res) => {
     };
 
     if (req.file) {
-        updateData.image = req.file.filename;
+        // Store the full image URL path
+        updateData.image = `https://cooking-9.onrender.com/public/images/${req.file.filename}`;
     }
 
     UserModel.findByIdAndUpdate(id, updateData, { new: true })
         .then(user => {
-            if (user.image) {
-                user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
-            }
             res.json(user);
         })
         .catch(err => res.status(500).json(err));
 });
+
 
 app.delete('/deleteUser/:id', authenticate, (req, res) => {
     const id = req.params.id;
