@@ -46,7 +46,7 @@ const storage = multer.diskStorage({
     }
 });
 const upload = multer({ storage });
-
+const BASE_URL = 'https://cooking-9.onrender.com';
 const authenticate = (req, res, next) => {
     const authHeader = req.headers.authorization;
     const token = authHeader && authHeader.split(' ')[1]; // Assuming Bearer <token>
@@ -66,6 +66,7 @@ const authenticate = (req, res, next) => {
 
 // Routes
 app.post('/createUser', upload.single('image'), authenticate, (req, res) => {
+    console.log('File:', req.file); // Log the file object to verify it is uploaded
     const { name, description, status, userId } = req.body;
     const image = req.file ? req.file.filename : null;
     if (!userId) {
@@ -75,7 +76,7 @@ app.post('/createUser', upload.single('image'), authenticate, (req, res) => {
     UserModel.create({ name, description, status, image, userId })
         .then(user => {
             if (user.image) {
-                user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
+                user.image = `${BASE_URL}/public/images/${user.image}`;
             }
             res.json(user);
         })
@@ -88,7 +89,7 @@ app.get('/getCategory', authenticate, (req, res) => {
         .then(users => {
             const usersWithFullImagePath = users.map(user => {
                 if (user.image) {
-                    user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
+                    user.image = `${BASE_URL}/public/images/${user.image}`;
                 }
                 return user;
             });
@@ -106,7 +107,7 @@ app.get('/getCategories', authenticate, (req, res) => {
 
             const categoriesWithFullImagePath = uniqueCategories.map(category => {
                 if (category.image) {
-                    category.image = `https://cooking-9.onrender.com/public/images/${category.image}`;
+                    category.image = `${BASE_URL}/public/images/${category.image}`;
                 }
                 return category;
             });
@@ -129,7 +130,7 @@ app.get('/getUserData', authenticate, (req, res) => {
         .then(users => {
             const usersWithFullImagePath = users.map(user => {
                 if (user.image) {
-                    user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
+                    user.image = `${BASE_URL}/public/images/${user.image}`;
                 }
                 return user;
             });
@@ -143,7 +144,7 @@ app.get('/getUser/:id', authenticate, (req, res) => {
     UserModel.findById(id)
         .then(user => {
             if (user.image) {
-                user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
+                user.image = `${BASE_URL}/public/images/${user.image}`;
             }
             res.json(user);
         })
@@ -165,7 +166,7 @@ app.put('/updateUser/:id', upload.single('image'), authenticate, (req, res) => {
     UserModel.findByIdAndUpdate(id, updateData, { new: true })
         .then(user => {
             if (user.image) {
-                user.image = `https://cooking-9.onrender.com/public/images/${user.image}`;
+                user.image = `${BASE_URL}/public/images/${user.image}`;
             }
             res.json(user);
         })
